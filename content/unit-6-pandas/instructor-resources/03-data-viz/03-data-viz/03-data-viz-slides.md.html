@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title></title>
+
+<meta name="description" content="">
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="../../../../lib/css/zenburn.css">
+<link rel="stylesheet" href="../../../../lib/css/prism.css">
+
+<link rel="stylesheet" href="../../../../css/reveal.css">
+<link rel="stylesheet" href="../../../../css/theme/ga-title.css" id="theme">
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/python-ga/proxima-nova/fonts.css" />
+
+</head>
+
+<body class="language-javascript">
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+
+<!--
+title: Intro to Visualization
+type: lesson
+duration: "00:40"
+creator: Emma Freeman [originating from David Yerrington's python-data-viz-principles lesson]
+-->
+<section id="section" class="level2 separator">
+<h2><img src="http://nagale.com/ga-python/images/GA_Cog_Medium_White_RGB.png" /></h2>
+<h1>
+Intro to Visualization
+</h1>
+<!--
+
+
+## Overview
+This lesson introduces students to the concept of data visualization - what it is, why it's important, the components of a great data visualization. Near the end, there's a section to help students understand when they would use a bar chart, pie chart, scatter plot, or histogram.
+
+## Important Notes or Prerequisites
+
+The next lesson is on Pandas and actually building these graphs. This lesson is all about understanding the different types of graphs and their use cases.
+
+
+## Learning Objectives
+*After this lesson, students will be able to...*
+
+- Describe why data visualization is important.
+- Identify the characteristics of a great data visualization.
+- Identify when you would use a bar chart, pie chart, scatter plot, and histogram.
+
+## Duration
+45 minutes.
+
+---
+
+## Suggested Agenda
+
+| Time | Activity | Purpose |
+| --- | --- | --- |
+| 0:00 - 0:03 | Welcome |
+| 0:03 - 0:08  | Data Visualization |
+| 0:08 - 0:30  | Types of Plots |
+| 0:30 - 0:42  | Visualization Tips |
+| 0:42 - 0:45  | Summary |
+
+## Materials and Preparation
+- Send out the link to the presentation slides to students.
+- No out of the ordinary prep needed
+
+## Differentiation and Extensions
+- There is a lot to say about best practices for data visualization! Feel free to add slides of your own.
+
+## In Class: Materials
+- Projector
+- Internet connection
+- Jupyter Notebooks
+- Python3
+-->
+<hr />
+</section>
+<section id="lesson-objectives" class="level2">
+<h2>Lesson Objectives</h2>
+<p><em>After this lesson, you will be able to…</em></p>
+<ul>
+<li>Describe why data visualization is important for communicating results.</li>
+<li>Identify how to select the correct visualization to use based on the data being presented.</li>
+<li>Identify characteristics to clearly communicate through data visualizations.</li>
+</ul>
+<aside class="notes">
+<p>Teaching Tips:</p>
+<ul>
+<li>Introduce topic and learning objectives</li>
+<li>Pause to take any student questions after reading through the learning objectives</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="how-do-we-make-sense-of-a-data-set" class="level2">
+<h2>How Do we Make Sense of a Data Set?</h2>
+<p>We’re only looking at 1/3 of this data set! While all the data we need is here, it is difficult to make sense of and draw any meaning from.</p>
+<p><img src="https://s3.amazonaws.com/ga-instruction/assets/python-fundamentals/flight-data-set.png" /></p>
+<aside class="notes">
+Teaching tips: - Note how much more difficult it is to read and make sense out of - Raw data contains a lot of information but isn’t digestible or understandable until it is presented in a synthesized way. - The first chart allowed us to compare, draw inferences, and have a clear take-away
+</aside>
+<hr />
+</section>
+<section id="so-what-is-data-visualization" class="level2">
+<h2>So What Is Data Visualization?</h2>
+<ul>
+<li>A quick, easy way to convey concepts that from from large data sets.</li>
+<li>We can use these charts, graphs, or illustrations to visualize large amounts of complex data.</li>
+</ul>
+<!--VISUALS: create venn diagram similar to this one (http://www.bethkanter.org/data-viz-2/) but simplified-->
+<aside class="notes">
+<p>Teaching Tips:</p>
+<ul>
+<li>Encourage discussion here by asking learners what differs between “charts” and “data visualization”? Where have you seen helpful charts, graphs, or other visualizations? Where could this be useful?</li>
+<li>Ask participants to share examples of data visualization they found captivating and why.</li>
+</ul>
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>“Because of the way the human brain processes information, charts or graphs that visualize large amounts of complex data are easier to understand than spreadsheets or reports. Data visualization is a quick, easy way to convey concepts in a universal manner — and you can experiment with different scenarios by making slight adjustments.”</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="criteria-for-crafting-a-good-visualization" class="level2">
+<h2>Criteria for Crafting a Good Visualization</h2>
+<ul>
+<li>Visualizations should follow three (plus one) rules. They should be:</li>
+</ul>
+<ol type="1">
+<li>Simplified</li>
+<li>Easy to Interpret</li>
+<li>Clearly Labeled</li>
+<li>(Bonus) Interactive</li>
+</ol>
+<aside class="notes">
+<strong>Teaching Tips</strong>: - Provide an example of for one of these bullets as to why they are important. - Discuss why interactive is a bonus - Explain how these three roles combine.
+</aside>
+<hr />
+</section>
+<section id="how-do-you-choose-the-right-chart-type" class="level2">
+<h2>How Do you Choose the Right Chart Type?</h2>
+<p>With so many chart types, it can be difficult to know how best to display your data. <img src="https://s3.amazonaws.com/ga-instruction/assets/python-fundamentals/chart_types.png" /> When creating a visualization first think about the variables you are showing (words, categories, numbers, etc., the volume of data, and the central point you are hoping to communicate through your visualization.</p>
+<aside class="notes">
+<p>Teaching tips:</p>
+<ul>
+<li>Explain that we’ll go over many of these in detail throughout the slides</li>
+<li>Do frequent checks for understanding by asking students for examples of cases where they would use each type of plot, and example of good or bad things they’ve seen with the plots.</li>
+<li>As you introduce new chart types, contrast it with the previous ones - give examples of when you’d use one vs the other.</li>
+<li>Bring up good (or bad!) practices as you see them in the examples.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="the-bar-chart-in-action" class="level2">
+<h2>The Bar Chart in Action</h2>
+<p>Looking at this bar chart, what do you notice about this visualization?</p>
+<p><img src="https://espnfivethirtyeight.files.wordpress.com/2016/08/koeze-olympics-age-3.png" /></p>
+<aside class="notes">
+<p>Teaching Tips: - Ask what is happening with the ordering of the bars here? Why would the designer make that choice? - How about the coloring? What do you notice about that? - Finally, what can you tell about this chart from the title?</p>
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Bar charts are one of the most common ways of visualizing data. Why? Because they make it easy to compare information, revealing highs and lows quickly. Bar charts are most effective when you have numerical data that splits neatly into different categories.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="when-to-use-a-bar-chart" class="level2">
+<h2>When to Use a Bar Chart</h2>
+<p>Bar charts are one of the most simple and frequently used chart types. They are useful for illustrating either one string or one numeric variable, quickly comparing information, or for show exact values.</p>
+<p>When thinking about using a bar chart consider: - Will you use vertical or horizontal bars? - How will you number your axis (it is always best to start at zero)? - How will you order your bars?</p>
+<aside class="notes">
+<strong>Teaching Tips</strong>: - Before moving to the next slide ask, when would you use a bar chart?
+</aside>
+<hr />
+</section>
+<section id="the-pie-chart-in-action" class="level2">
+<h2>The Pie Chart in Action</h2>
+<p>As you can see from this example pie charts can be effective for proportions or percentages.</p>
+<p><img src="https://www.csisun.com/wp-content/uploads/2012/07/solarhotwaterpiechart.jpg" /></p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Pie charts are the most commonly misused chart type.</li>
+<li>Pie charts show the relationship of parts out of whole.</li>
+<li>Why do they work well with proportions or percentages? Because those two types of information show the relationship of parts to a whole.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="when-to-use-the-pie-chart-type" class="level2">
+<h2>When to Use the Pie Chart Type</h2>
+<p>Pie charts are commonly misused. They show a part-to-whole relationship when the total amount is one of your variable and you’d like to show the subdivision of variables.</p>
+<p>When thinking about using a pie chart consider: - The more variables you have, as in the more slices of your pie you’ll have, the harder it is to read. - Area is <em>very</em> difficult for the eye to read, so if any of your wedges are similarly sized think about a different chart type. - If you want to compare data, leave it to bars or stacked bars. If your viewer has to work to translate pie wedges into relevant data or compare pie charts to one another, the key points you’re trying to convey might go unnoticed.</p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Before moving to the next slide ask, when would you use a pie chart?</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="the-scatter-plot-in-action" class="level2">
+<h2>The Scatter Plot in Action</h2>
+<p>This scatter plot uses a combination of text, coloring, and labelling to describe the data. What is clear or unclear from this chart about the data set?</p>
+<p><img src="http://kbroman.files.wordpress.com/2013/02/science_scores.png" /></p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Start a discussion around how clear or legible this chart type is.</li>
+<li>Ask, what the midline is doing here? How about the legend?</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="when-to-use-a-scatter-plot" class="level2">
+<h2>When to Use a Scatter Plot</h2>
+<p>Scatterplots are great for data dense visualizations and clusters. They are most effective for trends, concentrations, and outliers. They can be especially useful to see what you want to investigate further.</p>
+<p>When thinking about using a scatter plot consider: - This chart type is not as common so can me more difficult for an audience to read. - If dots are covering up each other, consider a different chart type. - A bubble chart is one variation on the scatter plot.</p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Scatter plots are a great way to give you a sense of trends, concentrations, and outliers, and are great to use while exploring your data. This will provide a clear idea of what you may want to investigate further.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="knowledge-check-choosing-a-chart" class="level2">
+<h2>Knowledge Check: Choosing a Chart</h2>
+<p>Annual sales in each state for a grocery store chain?</p>
+<ul>
+<li>Bar chart.</li>
+<li>Pie chart.</li>
+<li>Scatterplot.</li>
+</ul>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Which type of chart do you think we should use in the following cases? (bar)</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="when-to-use-a-histogram" class="level2">
+<h2>When to Use a Histogram</h2>
+<ul>
+<li>Effective for distribution across groups.</li>
+</ul>
+<p><img src="https://s3.amazonaws.com/ga-instruction/assets/python-fundamentals/histogram.png" /></p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Histograms are useful when you want to see how your data are distributed across groups. Important: histograms are not the same thing as a bar chart! Histograms look similar to bar charts, but with bar charts, each column represents a group defined by a categorical variable; and with histograms, each column represents a group defined by a continuous, quantitative variable.</li>
+<li>One implication of this distinction: with a histogram, it can be appropriate to talk about the the tendency of the observations to fall more on the low end or the high end of the X axis.</li>
+<li>With bar charts, however, the X axis does not have a low end or a high end; because the labels on the X axis are categorical - not quantitative.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="bar-chart-vs-histogram" class="level2">
+<h2>Bar Chart vs Histogram</h2>
+<p>The main difference between a bar chart and histogram is that histograms are used to show distributions of variables while bar charts are used to <em>compare</em> variables.</p>
+<p><embed src="https://qph.fs.quoracdn.net/main-qimg-237e649130e7ae0245e003a6a1949b91.webp" /></p>
+<aside class="notes">
+<strong>Teaching Tips</strong>: - Pause here to make sure the difference is clear as these two chart types are very similar. - When would you use a histogram? What about a bar chart?
+</aside>
+<hr />
+</section>
+<section id="which-type-of-chart" class="level2">
+<h2>Which type of chart?</h2>
+<p>Relationship of average income to education level?</p>
+<ul>
+<li>Bar chart.</li>
+<li>Pie chart.</li>
+<li>Scatterplot.</li>
+<li>Histogram.</li>
+</ul>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Which type of chart do you think we should use in the following cases? (scatter)</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="a-line-chart-in-action" class="level2">
+<h2>A Line Chart in Action</h2>
+<p>Line graphs are an excellent way to show change over time. While bar charts can also show time, they don’t show it in a continuous way like a line chart.</p>
+<p><img src="https://static.guim.co.uk/sys-images/Guardian/Pix/maps_and_graphs/2012/4/25/1335374489202/Recession-and-recovery-ch-001.gif" /></p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>: - Ask, how could time be represented differently with this chart type?</p>
+</aside>
+<hr />
+</section>
+<section id="when-to-use-a-line-chart" class="level2">
+<h2>When to Use a Line Chart</h2>
+<p>Line charts are particularly good at showing how a variable change over time. They work best if you have one date variable and one number variable.</p>
+<p>When thinking about using a line chart consider: - How many lines you’ll need on your graph, the more overlapping lines there are, the harder your chart will be to read. - Consider how many colors you need to use for your lines. Giving each line its own color forces the viewer to scan back and forth from the key to the graph. - Individual data points can be hard to read, but line charts are good for showing overall trends. - Similar to bar charts, try and start at 0 on your x axis.</p>
+<aside class="notes">
+<strong>Teaching Tips</strong>: - Explain what is meant by overall trends.
+</aside>
+<hr />
+</section>
+<section id="knowledge-check-which-type-of-chart" class="level2">
+<h2>Knowledge Check: Which type of chart?</h2>
+<p>Change in average income since 1960 for American adults?</p>
+<ul>
+<li>Bar chart.</li>
+<li>Pie chart.</li>
+<li>Scatterplot.</li>
+<li>Histogram.</li>
+</ul>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>Which type of chart do you think we should use in the following cases? (line or scatter)</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="returning-to-how-to-choose-the-right-chart" class="level2">
+<h2>Returning to How to Choose the Right Chart</h2>
+<p>Check out <a href="https://i.redd.it/e7alp8yrnb711.png">this series of charts</a>: <code>https://i.redd.it/e7alp8yrnb711.png</code></p>
+<ul>
+<li>Which is easiest to view the data?</li>
+</ul>
+<p>None right! Choosing a chart type depends firstly, on the data you have. Secondly, on the clearest way to convey your message, and how these two aspects align.</p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>The choice of visualization should depend what you are trying to show. Here is a helpful flowchart that you can use to determine the best type of visualizations.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="charts-code" class="level2">
+<h2>Charts &amp; Code</h2>
+<p>There is an increasing array of libraries and tools to allow us to use code to create visualize data in compelling and approachable ways.</p>
+<p>Check out this complex chart that was made using Python!</p>
+<p><img src="https://s3.amazonaws.com/ga-instruction/assets/python-fundamentals/flight-chart.jpg" /></p>
+<p><em>Source: u/dx034 on Reddit</em></p>
+<aside class="notes">
+Teaching tips: - Note that it seems intricate but was created with code. - Discuss how an understanding of chart types can help us become better at working with and displaying data using code.
+</aside>
+<hr />
+</section>
+<section id="group-activity-exploring-good-visualizations" class="level2">
+<h2>Group Activity: Exploring Good Visualizations</h2>
+<p>Get in small groups of 2-3.</p>
+<p>[Go to <a href="https://www.reddit.com/r/dataisbeautiful/top/">https://www.reddit.com/r/dataisbeautiful/top/</a>. These are all data visualizations created by people like you!</p>
+<p>Pick one that you think is particularly good and one that is particular bad. Why? What are the characteristics?</p>
+<aside class="notes">
+<p>Teaching tips:</p>
+<ul>
+<li>Give them time to think about this, then have learners present to the class.</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="visual-attributes-of-good-data-visualization" class="level2">
+<h2>Visual Attributes of Good Data Visualization</h2>
+<p>Some attributes affect our brain more strongly.</p>
+<p>In order of focus: - Position - Color - Size</p>
+<aside class="notes">
+<p><strong>Teaching Tips</strong>:</p>
+<ul>
+<li>What are some attributes you think are important for data visualizations to have? Some have more of an effect on our brains than others. The ones we tend to focus on most are position, then color, then size.</li>
+<li>Let’s take a look at what Jeffrey Shaffer, who teaches data visualization at the University of Cincinnati, thinks:</li>
+</ul>
+</aside>
+<hr />
+</section>
+<section id="summary" class="level2">
+<h2>Summary</h2>
+<ul>
+<li>The chart type you select should accurately represent the variables you are pulling from data in a way that is clearly readable for your audience.</li>
+<li>Visual considerations include: position, color, order, size. What else?</li>
+<li>With data visualizations becoming increasingly popular, a clean and clear chart goes a long way in conveying a message from a data set.</li>
+</ul>
+<aside class="notes">
+Teaching Tips: - Wrap up the learning and share additional resources and next steps. - If you have extra time at the end, head to the Data is Beautiful reddit page and pull up various visualizations; discuss what makes each one good or bad.
+</aside>
+<hr />
+</section>
+<section id="additional-resources" class="level2">
+<h2>Additional Resources</h2>
+<ul>
+<li>A great short article on <a href="http://annkemery.com/pie-chart-guidelines/">when pie charts are better?</a></li>
+<li><a href="https://github.com/mbostock/d3/wiki/Gallery">A gallery of charts</a></li>
+<li><a href="https://www.youtube.com/watch?v=hVimVzgtD6w">A Stats Video</a></li>
+<li><a href="http://www.sas.com/en_us/insights/big-data/data-visualization.html">SAS: Data Viz</a></li>
+<li><a href="https://drive.google.com/file/d/0Bx2SHQGVqWasT1l4NWtLclJJcWM/view">A guide to when to use each chart</a></li>
+<li><a href="http://blog.visme.co/types-of-graphs/">44 Types of Graphs</a></li>
+<li><a href="https://www.gooddata.com/blog/8-ways-turn-good-data-great-visualizations">Advice on making good visualizations</a></li>
+<li><a href="http://reddit.com/r/dataisbeautiful">Reddit’s Data Visualization forum</a></li>
+</ul>
+</section>
+
+</div>
+<footer><span class='slide-number'></span></footer>
+</div>
+<script src="../../../../lib/js/head.min.js"></script>
+<script src="../../../../js/reveal.js"></script>
+
+<script>
+
+var dependencies = [
+  { src: '../../../../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+  { src: '../../../../plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  { src: '../../../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  { src: '../../../../plugin/prism/prism.js', async: true, callback: function() { /*hljs.initHighlightingOnLoad();*/ } },
+  { src: '../../../../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+];
+
+if (Reveal.getQueryHash().instructor === 1) {
+  dependencies.push({ src: '../../../../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } });
+}
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: false,
+    slideNumber: true,
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'default',
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'slide',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: dependencies
+  });
+
+  if (Reveal.getQueryHash().instructor === 1) {
+    Reveal.configure(dependencies.push({ src: '../../../../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }));
+  }
+
+
+
+  Reveal.addEventListener('ready', function() {
+    if (Reveal.getCurrentSlide().classList.contains('separator-subhead')) {
+      document.getElementById('theme').setAttribute('href', '../../../../css/theme/ga-subhead.css');
+    } else if (Reveal.getCurrentSlide().classList.contains('separator')) {
+      document.getElementById('theme').setAttribute('href', '../../../../css/theme/ga-title.css')
+    } else {
+      document.getElementById('theme').setAttribute('href', '../../../../css/theme/ga.css');
+    }
+  });
+
+  Reveal.addEventListener('slidechanged', function(e) {
+    if (Reveal.getCurrentSlide().classList.contains('separator-subhead')) {
+      document.getElementById('theme').setAttribute('href', '../../../../css/theme/ga-subhead.css');
+    } else if (Reveal.getCurrentSlide().classList.contains('separator')) {
+      document.getElementById('theme').setAttribute('href', '../../../../css/theme/ga-title.css')
+    } else {
+      document.getElementById('theme').setAttribute('href', '../../../../css/theme/ga.css');
+    }
+  });
+</script>
+
+</body>
+</html>
